@@ -25,3 +25,24 @@ go run main.go --txt=a.txt
 如果程序运行目录只有唯一的jar包和唯一的.txt文件（txt文件里是gav坐标信息）：
 
 go run main.go
+
+## windows下路径怎么写
+txtFile := `E:\abc\def\xyz.txt`
+
+txtFile := "E:\\abc\\def\\xyz.txt"
+
+或者：
+
+filepath.Join 是 Go 标准库中的一个函数，它可以跨平台地构建路径。它会根据当前操作系统自动选择正确的路径分隔符（Windows 使用 \，Unix/Linux/macOS 使用 /）。虽然 filepath.Join 通常用于拼接相对路径，但它也可以用于绝对路径。
+
+import "path/filepath"
+
+// 构建路径
+txtFile := filepath.Join("E:", "abc", "def", "xyz.txt")
+
+### 启动方式（windows下）
+go run main.go --txt="E:\abc\def\xyz.txt" --jar="E:\abc\def\b.jar"
+
+go run main.go --txt="E:\abc\def\xyz.txt"
+
+
